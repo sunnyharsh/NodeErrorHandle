@@ -1,0 +1,47 @@
+we use set and setex for different purpose
+* set 
+    we use for set value in key and value pair 
+* setex 
+    we are using set value in key and as well as time expirtion of particuler key
+* flushall 
+    we used this command for remove all the keys from redis
+* KEY *
+    get all the keys from redis whatever we store in redis DB
+* lpush & rpush
+    we use lpush for create list also lpush push our data from left if 
+    we want push our data from right than we need to use rpush
+    ex:- lpush country india
+         lpush country usa
+         lpush country uk
+* lrange
+    we use this key to print our list
+    ex:- lrange country 0 -1 (we fetching here all keys of list)
+        output:- 1) "uk"
+                 2) "usa"
+                 2) "india"
+        lrange country 0 1
+        output:- 1) "uk"
+                 2) "usa"
+* llen country
+    we fetch length of country list from llen command
+* lpop & rpop
+    we use both command for remove elemnt from left and right
+    Ex:- lpop country
+         rpop country
+* lset
+    we use this key to modify our value from particler space
+    Ex:- lset country 0 germany 
+            (so whatever in first place in country list that thingh replace by germany)
+*linsert
+    we use this command to insert value in list but in linsert case we can give insert 
+    value where you want to push like before germany and after india like
+    EX:- linsert country before usa "New Zealand"
+    if we have list like this 
+                1) "uk"
+                2) "usa"
+                2) "india"
+    than after insert new zealand list will be like 
+                1) "uk"
+                2) "New Zealand"
+                3) "usa"
+                4) "india"
