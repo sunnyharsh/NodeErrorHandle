@@ -4,7 +4,6 @@ const catchAsync = require("../utils/catchAsync")
 
 exports.getAllTours=catchAsync(async ( req, res)=>{
     const data=await Tour.find({})
-    console.log(x)
     res.status(201).json({
        status:"success",
        data
@@ -12,7 +11,6 @@ exports.getAllTours=catchAsync(async ( req, res)=>{
 })
 exports.getTour=catchAsync(async ( req, res, next)=>{
     const data=await Tour.findById(req.params.id)
-
     //use this if condition during delete and update
     if(!data){
         return next(new AppError('No tour found with that ID', 404))

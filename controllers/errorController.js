@@ -9,7 +9,6 @@ const handleCasteErrorDB=(err)=>{
     return new AppError(message, 400)
 }
 const handleValidationErrorDB=(err)=>{
-    let msg="";
     const errors=Object.values(err.errors).map(el=> el.message)
     const message=`Invalid input data ${errors.join('. ')}`
     return new AppError(message, 400)
@@ -51,12 +50,5 @@ module.exports=(err, req, res, next)=>{
         if(err.code===11000) error=handleDuplicateFieldDB(error)
         if(err.name==="ValidationError") error=handleValidationErrorDB(error)
         sendErrorProd(error, res)
-
-        // res.status(err.statusCode).json({
-        //     status:err.status,
-        //     error:err,
-        //     msg:err.message,
-        //     stack:err.stack
-        // })
     }
 }
